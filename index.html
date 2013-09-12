@@ -1,0 +1,738 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<!--[if lt IE 9]>
+    <script src="http://www.p.ya.ru/media/html5.js"></script>
+	<link href="css/ie.css" rel="stylesheet" type="text/css" media="all">
+<![endif]-->
+<meta charset="utf-8">
+<title>Plugin VCarousel</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merienda%20One">
+</head>
+<body>
+<div class="wrapper">
+	<article>
+        <h1>VCarousel<sup>Lightbox</sup></h1>
+		<h2>Quick start ( <a href="simple_quick.html" title="go to the demo page">Demo</a> )</h2>
+<pre class="code">
+&lt;ul class="carousel"&gt;
+    &lt;li&gt;
+	&lt;figure&gt;
+		&lt;img src="img/img1.jpg" alt="#" /&gt;
+		&lt;figcaption&gt;Image caption&lt;/figcaption&gt;
+		&lt;p>Description, simple text, other...&lt;/p&gt;
+		&lt;a href="#" title="link"&gt;Link to more or other somethink link&lt;/a&gt;
+		&lt;p&gt;more, more, more ...&lt;/p&gt;
+	&lt;/figure&gt;
+    &lt;/li&gt;
+...etc...
+&lt;ul&gt;</pre>
+        <pre>$(document).ready(function(){
+	$(".carousel").<b>VCarousel()</b>;
+});</pre>
+        <h2>Example 1 with MOD options ( <a href="example1.html" title="go to the demo page">Demo</a> )</h2>
+		<pre class="code">
+&lt;ul class="carousel"&gt;
+    &lt;li&gt;
+	&lt;figure&gt;
+		&lt;img src="img/img1.jpg" alt="#" /&gt;
+		&lt;figcaption class="carousel-caption"&gt;Image caption&lt;/figcaption&gt;
+		&lt;p class="carousel-desc"&gt;Description, simple text, other...&lt;/p&gt;
+		&lt;a class="carousel-linkForLB" href="#" title="link"&gt;Link to more or other somethink link&lt;/a&gt;
+		&lt;p&gt;more, more, more ...&lt;/p&gt;
+	&lt;/figure&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+	&lt;figure&gt;
+		&lt;a class="carousel-link" href="img/img11.jpg" title=""&gt;
+			&lt;img src="img/img1.jpg" alt="#" /&gt;
+		&lt;/a&gt;
+		&lt;figcaption class="carousel-caption"&gt;Image caption&lt;/figcaption&gt;
+		&lt;p&gt;Description, simple text, other...&lt;/p&gt;
+		&lt;a class="carousel-linkForLB" href="#" title="link"&gt;Link to more or other somethink link&lt;/a&gt;
+		&lt;p&gt;more, more, more ...&lt;/p&gt;
+	&lt;/figure&gt;
+    &lt;/li&gt;
+...etc...
+&lt;ul&gt;
+&lt;div class="carousel-nav"&gt;&lt;/div&gt;
+&lt;div class="carousel-control"&gt;&lt;/div&gt;</pre>
+			<pre class="code">$(document).ready(function(){
+	$("selector").VCarouselMOD({
+		playBack: true,
+		step: 2,
+		ID: 3,
+		play: 3000,
+		speed: 1000,
+		navHidden: true,
+		navNum: true,
+		fading: false,
+		easing: "easeOutBounce",
+		visible: 3,
+		lightbox: true,
+		LBImgN: true,
+		LBcaption: ".carousel-caption",
+		LBdesc: ".carousel-desc",
+		LBaddLink: ".carousel-linkForLB",
+		prevText: "< Prev",
+		nextText: "Next >",
+		LBprevText: "Prev",
+		LBnextText: "Next",
+		control: ".carousel-control",
+		LBloadImg: ".carousel-link",
+		navigation: ".carousel-nav",
+		navigationImg: true
+	});
+});</pre>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            Option
+                        </td>
+                        <td>
+                            version
+                        </td>
+                        <td>
+                            default value
+                        </td>
+                        <td>
+                            possible value
+                        </td>
+                        <td class="last">
+                            comment
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            visible
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            integer
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            ID
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            number, "string"
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            easing
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            null
+                        </td>
+                        <td>
+                            null, 'swing', 'linear'
+                        </td>
+                        <td>
+                            for more: add plugin easing, download: <a href="js/jquery.easing.1.3.js" title="download full(Uncompressed) version">easing plugin</a>. Demo: <a href="http://www.jqueryui.com/demos/effect/easing.html" title="Go to demo page">look at</a>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBeasing
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            null
+                        </td>
+                        <td>
+                            null, 'swing', 'linear'
+                        </td>
+                        <td>
+                            for more: add plugin easing, download: <a href="js/jquery.easing.1.3.js" title="download full(Uncompressed) version">easing plugin</a>. Demo: <a href="http://www.jqueryui.com/demos/effect/easing.html" title="Go to demo page">look at</a>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBloadImg
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBcaption
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBdesc
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBaddLink
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            fading
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            fadingSpeed
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            500
+                        </td>
+                        <td>
+                            integer
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            step
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            integer
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            play
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            null
+                        </td>
+                        <td>
+                            null or integer ( ms )
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            lightbox (LB)
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            playBack
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            hoverStop
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            true
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            control
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td>
+                            btnPrev
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            37
+                        </td>
+                        <td>
+                            key code
+                        </td>
+                        <td>
+                            more: <a href="http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes" title="key code list">key code list</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            btnNext
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            39
+                        </td>
+                        <td>
+                            key code
+                        </td>
+                        <td>
+                            more: <a href="http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes" title="key code list">key code list</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            speed
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            500
+                        </td>
+                        <td>
+                            integer ( ms )
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBspeed
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            300
+                        </td>
+                        <td>
+                            integer ( ms )
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBspeedFade
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            300
+                        </td>
+                        <td>
+                            integer ( ms )
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            navNum
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            navigation
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector for wrap"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+					
+					<tr>
+                        <td>
+                            navigationImg
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            prevId
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            nextId
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            ''
+                        </td>
+                        <td>
+                            "selector"
+                        </td>
+                        <td>
+                            for example: .class, #ID, element, etc...
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            prevText
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                             'Prev'
+                        </td>
+                        <td>
+                            string
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            nextText
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                             'Next'
+                        </td>
+                        <td>
+                            string
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBprevText
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                             'Prev'
+                        </td>
+                        <td>
+                            string
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            LBnextText
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                             'Next'
+                        </td>
+                        <td>
+                            string
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            navHidden
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            vertical
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            LBImgN
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            false
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            LBcloseBtn
+                        </td>
+                        <td>
+                            MOD
+                        </td>
+                        <td>
+                            true
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Download</h2>
+            <p><a href="js/vcarousel.js" title="download full(Uncompressed) version">Full (Uncompressed)</a>, <a href="js/vcarousel.min.js" title="download minified version">minified</a> or <a href="js/vcarousel.pack.js" title="download pack version">pack</a></p>
+			<h2>Download MOD Version</h2>
+            <p><a href="js/vcarousel_mod.js" title="download full(Uncompressed) version">Full (Uncompressed)</a>, <a href="js/vcarousel_mod.min.js" title="download minified version">minified</a> or <a href="js/vcarousel_mod.pack.js" title="download pack version">pack</a></p>
+			<h2>Download Easing plugin</h2>
+			<p><a href="js/jquery.easing.1.3.js" title="download full(Uncompressed) version">Full (Uncompressed)</a>, <a href="js/jquery.easing.min.js" title="download minified version">minified</a> or <a href="js/jquery.easing.pack.js" title="download pack version">pack</a></p>
+	</article>
+    <footer>
+    	<small>&copy; 2011 by Web-Viper. <a href="maito:web.viper@yandex.ru">web.viper@yandex.ru</a></small>
+    </footer>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="js/vcarousel.js"></script>
+<script src="js/vcarousel_mod.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".carousel").VCarousel();
+	$(".carousel-mod").VCarouselMOD({
+		playBack: true,
+		step: 2,
+		ID: 3,
+		play: 3000,
+		speed: 600,
+		navHidden: true,
+		navNum: true,
+		fading: true,
+		visible: 3,
+		lightbox: true,
+		LBImgN: true,
+		LBcaption: ".carousel-caption",
+		LBaddLink: ".carousel-linkForLB",
+		prevText: "< Prev",
+		nextText: "Next >",
+		LBprevText: "Prev",
+		LBnextText: "Next",
+		control: ".carousel-control",
+		LBloadImg: ".carousel-link",
+		navigation: ".carousel-nav",
+		navigationImg: true
+	});
+	$("table tbody tr:even td").css({"background":"#cddaea"});
+	$("table td:last-child").css("border-right","none");
+});
+</script>
+</body>
+</html>
